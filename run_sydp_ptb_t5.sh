@@ -1,0 +1,24 @@
+CUDA_VISIBLE_DEVICES=0 python -u main.py \
+--model_type t5 \
+--plm_path T5v1.1-base \
+--model_name t5-base \
+--tokenizer_name t5-base \
+--model_id 1510  \
+--conf_dir config.sydp.ptb \
+--add_special_token \
+--output_dir output/test \
+--save_total_limit 3 \
+--train_dir DependencyParsing/PTB3/dpsg/ptb3-train.json \
+--eval_dir DependencyParsing/PTB3/dpsg/ptb3-joint.json \
+--test_dir DependencyParsing/PTB3/dpsg/ptb3-test.json \
+--num_train_epochs 100 \
+--per_device_train_batch_size 8 \
+--per_device_eval_batch_size 8 \
+--generation_num_beams 4 \
+--predict_with_generate \
+--metric_for_best_model dev_las \
+--evaluation_strategy steps \
+--eval_steps 1000 \
+--save_steps 1000 \
+--assign_token_embedding 
+| tee dpsg-ptb3-t5-v1.1-base-1510.rcd
