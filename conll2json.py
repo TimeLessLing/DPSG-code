@@ -72,8 +72,7 @@ folders = ["UD_English-EWT/", "UD_German-GSD/"]
 
 for lang, path in zip(languages, folders):
     train_data = read_corpus(path + lang + "train.conllu")
-    # dev_data = read_corpus(path + lang + "dev.conllu")
-    dev_data = read_corpus(path + lang + "test.conllu")
+    dev_data = read_corpus(path + lang + "dev.conllu")
     test_data = read_corpus(path + lang + "test.conllu")
 
     train_sentences, train_pairs, train_rels = build_pair(train_data)
